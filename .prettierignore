@@ -8,3 +8,6 @@ coverage
 .turbo
 *.log
 .pnpm-store
+
+# Solidity is formatted by forge fmt, not Prettier
+*.sol

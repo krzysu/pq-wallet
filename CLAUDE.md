@@ -41,6 +41,10 @@ This is a **pnpm workspace monorepo** managed with **Turborepo**. The workspace 
 - **No default exports** - ESLint enforces named exports (config files exempted)
 - **Consistent type imports** - Use `import type` for type-only imports
 
+## Solidity Constraints
+
+- **No short-circuit returns in verifiers** - Verifier `verify()` functions must always execute the same code path regardless of input validity. Early returns that skip external calls cause ERC-4337 bundlers to underestimate gas during simulation, leading to out-of-gas reverts in real transactions. Let sub-adapters handle invalid inputs and return false naturally.
+
 ## Code Quality Workflow
 
 ### Global Commands (All Workspaces)

@@ -1,0 +1,5 @@
+forge-std/=lib/kernel/lib/forge-std/src/
+solady/=lib/kernel/lib/solady/src/
+@zerodev/kernel/=lib/kernel/src/
+ExcessivelySafeCall/=lib/kernel/lib/ExcessivelySafeCall/src/
+sstore2/=src/vendor/sstore2/

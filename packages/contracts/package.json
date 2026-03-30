@@ -12,10 +12,24 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "echo 'TODO: forge build'",
-    "clean": "rm -rf cache out",
-    "test": "echo 'TODO: forge test'",
-    "check": "echo 'TODO: add checks'",
-    "fix": "echo 'TODO: add fixes'"
+    "build": "forge build",
+    "clean": "forge clean",
+    "test": "forge test --no-match-path 'test/fork/*' -vvv",
+    "test:fork": "forge test --match-path 'test/fork/*' -vvv",
+    "test:all": "forge test -vvv",
+    "test:gas": "forge test --no-match-path 'test/fork/*' --gas-report",
+    "generate:fixtures": "node scripts/generate-pq-fixtures.mjs",
+    "check": "forge fmt --check && solhint 'src/**/*.sol' --max-warnings 1",
+    "fix": "forge fmt && forge lint && solhint 'src/**/*.sol' --max-warnings 1",
+    "snapshot": "forge snapshot",
+    "sizes": "forge build --sizes",
+    "slither": "slither src/ --config-file slither.config.json"
+  },
+  "devDependencies": {
+    "@noble/hashes": "^2.0.1",
+    "@noble/post-quantum": "^0.5.4",
+    "@tectonic-labs/bedrock-wasm": "^0.2.0",
+    "solhint": "^6.1.0",
+    "viem": "^2.47.6"
   }
 }
