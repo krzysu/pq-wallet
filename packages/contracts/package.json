@@ -1,0 +1,21 @@
+{
+  "name": "@pq-wallet/contracts",
+  "version": "0.0.1",
+  "description": "PQ Wallet smart contracts - ERC-7579 validator module for post-quantum signatures",
+  "keywords": [
+    "solidity",
+    "ethereum",
+    "erc-7579",
+    "post-quantum",
+    "validator"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "echo 'TODO: forge build'",
+    "clean": "rm -rf cache out",
+    "test": "echo 'TODO: forge test'",
+    "check": "echo 'TODO: add checks'",
+    "fix": "echo 'TODO: add fixes'"
+  }
+}

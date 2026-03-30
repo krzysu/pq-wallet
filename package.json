@@ -1,0 +1,45 @@
+{
+  "name": "pq-wallet-monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "description": "PQ Wallet - quantum-secure smart wallet with ERC-7579 validator for post-quantum signatures",
+  "keywords": [
+    "ethereum",
+    "wallet",
+    "post-quantum",
+    "erc-4337",
+    "erc-7579",
+    "falcon",
+    "mldsa"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "turbo run build",
+    "check": "turbo run check",
+    "fix": "turbo run fix",
+    "test": "turbo run test",
+    "clean": "turbo run clean && rm -rf node_modules .turbo"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.30.0",
+    "@eslint/js": "^9.27.0",
+    "@types/node": "^22.19.7",
+    "eslint": "^9.27.0",
+    "eslint-plugin-import": "^2.32.0",
+    "prettier": "^3.8.1",
+    "turbo": "^2.8.21",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.57.2"
+  },
+  "pnpm": {
+    "overrides": {
+      "@types/node": "^22.19.7"
+    }
+  },
+  "engines": {
+    "node": ">=22.12.0",
+    "pnpm": ">=10.28.0"
+  },
+  "packageManager": "pnpm@10.28.1"
+}

@@ -1,0 +1,10 @@
+node_modules
+dist
+build
+out
+cache
+artifacts
+coverage
+.turbo
+*.log
+.pnpm-store

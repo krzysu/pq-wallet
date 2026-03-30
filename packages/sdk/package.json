@@ -1,0 +1,54 @@
+{
+  "name": "@pq-wallet/sdk",
+  "version": "0.0.1",
+  "description": "PQ Wallet SDK - client library for quantum-secure smart accounts",
+  "keywords": [
+    "ethereum",
+    "wallet",
+    "post-quantum",
+    "erc-4337",
+    "account-abstraction"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rm -rf dist *.tsbuildinfo .turbo node_modules",
+    "check": "pnpm typecheck && pnpm prettier:check && pnpm lint",
+    "fix": "pnpm typecheck && pnpm prettier:write && pnpm lint:fix",
+    "lint": "eslint src --ext .ts --cache --cache-location node_modules/.cache/eslint",
+    "lint:fix": "eslint src --ext .ts --fix --cache --cache-location node_modules/.cache/eslint",
+    "prettier:check": "prettier --check \"src/**/*.{ts,md,json}\"",
+    "prettier:write": "prettier --write \"src/**/*.{ts,md,json}\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "tslib": "^2.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.7",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "viem": "^2.47.6",
+    "vitest": "^4.1.2"
+  },
+  "peerDependencies": {
+    "viem": "^2.0.0"
+  }
+}
