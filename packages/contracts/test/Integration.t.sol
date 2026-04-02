@@ -66,6 +66,7 @@ contract MockPQAdapter is IPQVerifier {
         _keys[keyId] = address(1);
         bytes memory result = VERIFIER.setKey(publicKey);
         if (result.length < 20) revert KeyDeploymentFailed();
+        // forge-lint: disable-next-line(unsafe-typecast)
         address pkContract = address(bytes20(result));
         if (pkContract == address(0) || pkContract == address(1)) revert KeyDeploymentFailed();
         _keys[keyId] = pkContract;

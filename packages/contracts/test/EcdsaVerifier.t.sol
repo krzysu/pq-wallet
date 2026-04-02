@@ -87,6 +87,21 @@ contract EcdsaVerifierTest is Test {
         assertTrue(ecdsaVerifier.verify(hash, signature, keyId));
     }
 
+    function test_verify_malformedSignature_returnsFalse() public view {
+        bytes32 hash = keccak256("test message");
+        // Completely invalid 65-byte signature (not a valid ECDSA recovery)
+        bytes memory malformed = new bytes(65);
+        bytes32 keyId = bytes32(uint256(uint160(signer)));
+        assertFalse(ecdsaVerifier.verify(hash, malformed, keyId));
+    }
+
+    function test_verify_emptySignature_returnsFalse() public view {
+        bytes32 hash = keccak256("test message");
+        bytes memory empty = "";
+        bytes32 keyId = bytes32(uint256(uint160(signer)));
+        assertFalse(ecdsaVerifier.verify(hash, empty, keyId));
+    }
+
     function test_composedVerifier_ecdsaPlusPQ() public {
         MockPQVerifierForEcdsa mockPq = new MockPQVerifierForEcdsa();
         address authorizedCaller = makeAddr("router");

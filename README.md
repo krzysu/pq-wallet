@@ -13,6 +13,8 @@ Read more about the design in [Designing a Quantum-Secure Ethereum Wallet](https
 | Package                                       | Description                                                 |
 | --------------------------------------------- | ----------------------------------------------------------- |
 | [`@pq-wallet/contracts`](packages/contracts/) | Solidity smart contracts — PQValidator, adapters, verifiers |
+| [`@pq-wallet/sdk`](packages/sdk/)             | Client library for quantum-secure smart accounts (viem)     |
+| [`@pq-wallet/cli`](packages/cli/)             | Command-line interface for managing PQ wallet accounts      |
 
 ## Development
 

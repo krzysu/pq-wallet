@@ -16,6 +16,9 @@ fs_permissions = [{ access = "read-write", path = "./deployments" }]
 [rpc_endpoints]
 sepolia = "${SEPOLIA_RPC_URL}"
 
+[lint]
+ignore = ["src/vendor/**/*.sol"]
+
 [fmt]
 line_length = 120
 tab_width = 4

@@ -487,6 +487,7 @@ contract PQValidatorTest is Test {
         // A random 65-byte payload that isn't a valid ECDSA sig for owner
         bytes memory fakeSig = new bytes(65);
         for (uint256 i = 0; i < 65; i++) {
+            // forge-lint: disable-next-line(unsafe-typecast)
             fakeSig[i] = bytes1(uint8(i + 1));
         }
 
@@ -494,5 +495,14 @@ contract PQValidatorTest is Test {
         vm.prank(account);
         bytes4 result = validator.isValidSignatureWithSender(address(0), keccak256("msg"), fakeSig);
         assertEq(result, bytes4(0xffffffff));
+    }
+
+    // ========== EIP-7201 storage slot verification ==========
+
+    function test_storageSlot_matchesEIP7201Derivation() public pure {
+        bytes32 derived =
+            keccak256(abi.encode(uint256(keccak256("pqwallet.validator.storage")) - 1)) & ~bytes32(uint256(0xff));
+        // Must match the hardcoded STORAGE_SLOT in PQStorageLib
+        assertEq(derived, 0xb9c87b537fc6962e00fd83451d672e31943c36cc3c6386576bdded54b09ae800);
     }
 }

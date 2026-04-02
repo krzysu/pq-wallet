@@ -62,6 +62,8 @@ contract EthFalconAdapter is IPQVerifier {
         // slither-disable-next-line reentrancy-no-eth
         bytes memory result = ETHFALCON.setKey(abi.encode(ntth));
         if (result.length < 20) revert KeyDeploymentFailed();
+        // ZKNOX setKey returns abi.encodePacked(address) = 20 bytes
+        // forge-lint: disable-next-line(unsafe-typecast)
         address pkContract = address(bytes20(result));
         if (pkContract == address(0) || pkContract == address(1)) revert KeyDeploymentFailed();
 

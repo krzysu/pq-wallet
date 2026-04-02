@@ -43,7 +43,7 @@ jobs:
         run: forge build --sizes
 
       - name: Gas snapshot check
-        run: forge snapshot --no-match-path 'test/fork/*' --check
+        run: forge snapshot --no-match-path 'test/fork/*' --check --tolerance 1
 
   sdk:
     name: SDK

@@ -20,6 +20,8 @@ contract EcdsaVerifier is IPQVerifier {
         if (publicKey.length != 20 && publicKey.length != 32) revert InvalidPublicKeyLength();
         address signer;
         if (publicKey.length == 20) {
+            // publicKey.length == 20 is checked above
+            // forge-lint: disable-next-line(unsafe-typecast)
             signer = address(bytes20(publicKey));
         } else {
             signer = abi.decode(publicKey, (address));
@@ -38,7 +40,7 @@ contract EcdsaVerifier is IPQVerifier {
         bytes32 keyId
     ) external view returns (bool) {
         address expectedSigner = address(uint160(uint256(keyId)));
-        address recovered = ECDSA.recover(hash, signature);
-        return recovered == expectedSigner;
+        address recovered = ECDSA.tryRecover(hash, signature);
+        return recovered != address(0) && recovered == expectedSigner;
     }
 }

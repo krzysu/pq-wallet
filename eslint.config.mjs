@@ -96,6 +96,13 @@ export default tseslint.config(
     },
   },
   {
+    // Allow default exports for oclif commands and hooks
+    files: ['**/cli/src/commands/**/*.ts', '**/cli/src/hooks/**/*.ts'],
+    rules: {
+      'import/no-default-export': 'off',
+    },
+  },
+  {
     ignores: ['dist', 'node_modules', '*.cjs', '*.js', '.turbo', 'out', 'cache', 'artifacts'],
   }
 );

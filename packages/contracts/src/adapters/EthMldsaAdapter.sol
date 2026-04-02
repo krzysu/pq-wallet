@@ -56,6 +56,7 @@ contract EthMldsaAdapter is IPQVerifier {
         bytes memory result = MLDSAETH.setKey(expandedKey);
         // ZKNOX setKey returns abi.encodePacked(address) = 20 bytes
         if (result.length < 20) revert KeyDeploymentFailed();
+        // forge-lint: disable-next-line(unsafe-typecast)
         address pkContract = address(bytes20(result));
         if (pkContract == address(0) || pkContract == address(1)) revert KeyDeploymentFailed();
 

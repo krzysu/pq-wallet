@@ -1,0 +1,72 @@
+{
+  "name": "@pq-wallet/cli",
+  "version": "0.0.1",
+  "description": "PQ Wallet CLI - quantum-secure smart wallet management",
+  "keywords": [
+    "ethereum",
+    "wallet",
+    "post-quantum",
+    "cli",
+    "erc-4337"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "pqwallet": "./bin/run.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "bin",
+    "dist",
+    "oclif.manifest.json"
+  ],
+  "oclif": {
+    "bin": "pqwallet",
+    "dirname": "pqwallet",
+    "commands": "./dist/commands",
+    "hooks": {
+      "init": "./dist/hooks/init"
+    },
+    "plugins": [
+      "@oclif/plugin-help"
+    ],
+    "topicSeparator": " "
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rm -rf dist *.tsbuildinfo .turbo node_modules",
+    "check": "pnpm typecheck && pnpm prettier:check && pnpm lint",
+    "fix": "pnpm typecheck && pnpm prettier:write && pnpm lint:fix",
+    "lint": "eslint src --ext .ts --cache --cache-location node_modules/.cache/eslint",
+    "lint:fix": "eslint src --ext .ts --fix --cache --cache-location node_modules/.cache/eslint",
+    "prettier:check": "prettier --check \"src/**/*.{ts,md,json}\"",
+    "prettier:write": "prettier --write \"src/**/*.{ts,md,json}\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@inquirer/password": "^4.0.21",
+    "@inquirer/prompts": "^7.9.0",
+    "@oclif/core": "^4.8.0",
+    "@oclif/plugin-help": "^6.2.37",
+    "@pq-wallet/sdk": "workspace:*",
+    "@tectonic-labs/bedrock-wasm": "^0.2.0",
+    "tslib": "^2.8.1",
+    "viem": "^2.47.6"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.7",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.2"
+  }
+}

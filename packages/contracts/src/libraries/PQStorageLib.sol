@@ -39,6 +39,7 @@ library PQStorageLib {
         bytes32 raw,
         uint256 nonce
     ) internal pure returns (bytes32) {
+        // forge-lint: disable-next-line(asm-keccak256)
         return keccak256(abi.encodePacked(raw, nonce));
     }
 }

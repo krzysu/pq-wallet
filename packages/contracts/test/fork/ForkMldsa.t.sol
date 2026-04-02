@@ -46,6 +46,7 @@ contract ForkMldsaTest is Test {
         if (result.length >= 32) {
             pkContract = abi.decode(result, (address));
         } else {
+            // forge-lint: disable-next-line(unsafe-typecast)
             pkContract = address(bytes20(result));
         }
         console.log("pkContract:", pkContract);
@@ -66,6 +67,7 @@ contract ForkMldsaTest is Test {
         if (result.length >= 32) {
             pkContract = abi.decode(result, (address));
         } else {
+            // forge-lint: disable-next-line(unsafe-typecast)
             pkContract = address(bytes20(result));
         }
         console.log("pkContract:", pkContract);
@@ -88,6 +90,7 @@ contract ForkMldsaTest is Test {
         if (result.length >= 32) {
             pkContract = abi.decode(result, (address));
         } else {
+            // forge-lint: disable-next-line(unsafe-typecast)
             pkContract = address(bytes20(result));
         }
 
