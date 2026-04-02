@@ -45,6 +45,33 @@ jobs:
       - name: Gas snapshot check
         run: forge snapshot --no-match-path 'test/fork/*' --check
 
+  sdk:
+    name: SDK
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Check formatting and linting
+        run: pnpm --filter @pq-wallet/sdk check
+
+      - name: Build
+        run: pnpm --filter @pq-wallet/sdk build
+
+      - name: Test
+        run: pnpm --filter @pq-wallet/sdk test
+
   slither:
     name: Slither
     runs-on: ubuntu-latest

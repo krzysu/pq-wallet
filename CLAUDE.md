@@ -40,6 +40,8 @@ This is a **pnpm workspace monorepo** managed with **Turborepo**. The workspace 
 - **No dynamic imports** - Never use `import()` or `await import()`. Always use static imports at the top of the file
 - **No default exports** - ESLint enforces named exports (config files exempted)
 - **Consistent type imports** - Use `import type` for type-only imports
+- **Use viem helpers** - For hex operations, use viem utilities (`toHex`, `encodePacked`, `hexToBytes`, etc.) instead of manual string templates like `` `0x${...}` ``
+- **Trust viem types** - Use viem types directly (`Address`, `Hex`, `LocalAccount`, `PublicClient<Transport, Chain>`) without wrapping or re-declaring
 
 ## Solidity Constraints
 
